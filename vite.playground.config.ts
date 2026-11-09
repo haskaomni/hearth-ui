@@ -1,0 +1,9 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  root: "playground",
+  base: "./",
+  plugins: [react()],
+  build: { outDir: "../playground-dist", emptyOutDir: true },
+});

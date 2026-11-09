@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Hearth UI — design tokens
+   Every value is a CSS custom property, so a host app can re-skin the library
+   by overriding variables on :root (or on any wrapper element).
+   ========================================================================== */
+
+:root,
+[data-hx-theme="light"] {
+  color-scheme: light;
+
+  /* Typography */
+  --hx-font-sans: "Geist Mono", "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --hx-font-display: var(--hx-font-sans);
+  --hx-text-2xs: 10px;
+  --hx-text-xs: 11px;
+  --hx-text-sm: 12px;
+  --hx-text-md: 13px;
+  --hx-text-lg: 15px;
+  --hx-text-xl: 18px;
+  --hx-text-2xl: 22px;
+  --hx-text-3xl: 28px;
+  --hx-leading: 1.5;
+  --hx-tracking-tight: -0.02em;
+
+  /* Neutral surfaces */
+  --hx-bg: #ffffff;              /* main canvas */
+  --hx-bg-subtle: #f7f7f7;       /* sidebar, segmented track */
+  --hx-bg-muted: #f2f2f2;        /* hover, chips */
+  --hx-bg-inset: #fafafa;        /* card thumbnails, wells */
+  --hx-surface: #ffffff;         /* cards */
+  --hx-surface-raised: #ffffff;  /* popovers, composer */
+
+  --hx-border: #ececec;
+  --hx-border-strong: #dcdcdc;
+  --hx-ring: rgba(17, 17, 17, 0.12);
+
+  --hx-fg: #111111;
+  --hx-fg-secondary: #4a4a4a;
+  --hx-fg-muted: #8c8c8c;
+  --hx-fg-subtle: #b4b4b4;
+
+  /* Inverted (primary) */
+  --hx-primary: #111111;
+  --hx-primary-hover: #2a2a2a;
+  --hx-primary-fg: #ffffff;
+
+  /* Accents */
+  --hx-blue: #2f6bff;
+  --hx-blue-soft: #eaf0ff;
+  --hx-purple: #7a5af8;
+  --hx-purple-soft: #f1edff;
+  --hx-red: #e5484d;
+  --hx-red-soft: #fdecec;
+  --hx-green: #2fa36b;
+  --hx-green-soft: #e8f6ee;
+  --hx-amber: #f0a020;
+  --hx-amber-soft: #fff4e0;
+  --hx-pink: #f06292;
+  --hx-pink-soft: #fdeaf1;
+
+  /* Shape */
+  --hx-radius-xs: 4px;
+  --hx-radius-sm: 6px;
+  --hx-radius-md: 8px;
+  --hx-radius-lg: 12px;
+  --hx-radius-xl: 16px;
+  --hx-radius-full: 999px;
+
+  /* Elevation */
+  --hx-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --hx-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --hx-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.03), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --hx-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.04), 0 18px 48px rgba(0, 0, 0, 0.1);
+
+  /* Spacing & layout */
+  --hx-space-1: 4px;
+  --hx-space-2: 8px;
+  --hx-space-3: 12px;
+  --hx-space-4: 16px;
+  --hx-space-5: 20px;
+  --hx-space-6: 24px;
+  --hx-space-8: 32px;
+  --hx-sidebar-width: 236px;
+  --hx-control-h-sm: 28px;
+  --hx-control-h-md: 34px;
+  --hx-control-h-lg: 40px;
+
+  /* Motion */
+  --hx-ease: cubic-bezier(0.2, 0, 0, 1);
+  --hx-duration: 160ms;
+}
+
+[data-hx-theme="dark"] {
+  color-scheme: dark;
+
+  --hx-bg: #0c0c0d;
+  --hx-bg-subtle: #121214;
+  --hx-bg-muted: #1c1c1f;
+  --hx-bg-inset: #151517;
+  --hx-surface: #141416;
+  --hx-surface-raised: #19191c;
+
+  --hx-border: #252528;
+  --hx-border-strong: #333337;
+  --hx-ring: rgba(255, 255, 255, 0.16);
+
+  --hx-fg: #f2f2f2;
+  --hx-fg-secondary: #c2c2c4;
+  --hx-fg-muted: #85858a;
+  --hx-fg-subtle: #5a5a60;
+
+  --hx-primary: #f5f5f5;
+  --hx-primary-hover: #dedede;
+  --hx-primary-fg: #0c0c0d;
+
+  --hx-blue: #5b8cff;
+  --hx-blue-soft: rgba(91, 140, 255, 0.14);
+  --hx-purple: #9b83ff;
+  --hx-purple-soft: rgba(155, 131, 255, 0.14);
+  --hx-red: #f2666a;
+  --hx-red-soft: rgba(242, 102, 106, 0.14);
+  --hx-green: #4cc38a;
+  --hx-green-soft: rgba(76, 195, 138, 0.14);
+  --hx-amber: #f5b544;
+  --hx-amber-soft: rgba(245, 181, 68, 0.14);
+  --hx-pink: #f47fa8;
+  --hx-pink-soft: rgba(244, 127, 168, 0.14);
+
+  --hx-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --hx-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --hx-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --hx-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.3), 0 18px 48px rgba(0, 0, 0, 0.5);
+}
