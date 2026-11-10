@@ -80,6 +80,7 @@
   --hx-space-5: 20px;
   --hx-space-6: 24px;
   --hx-space-8: 32px;
+  --hx-item-gap: 3px;          /* vertical gap between hoverable list rows (nav, lists) */
   --hx-sidebar-width: 236px;
   --hx-control-h-sm: 28px;
   --hx-control-h-md: 34px;
