@@ -13,8 +13,12 @@ import {
   Card, Meter, FileCard, Table, Badge, TaskCard, KanbanBoard, KanbanColumn, AvatarGroup, Avatar, Input, Switch,
   Field, Textarea, Progress, Heading, Eyebrow, IconTile, Orb, Landscape, Divider,
 } from "../src";
+import "../src/styles/tokens.css";
+import "../src/styles/components.css";
+import { DocsPage } from "./docs";
+import "./docs.css";
 
-type Page = "chat" | "goals" | "tasks" | "files" | "components";
+type Page = "docs" | "chat" | "goals" | "tasks" | "files" | "components";
 
 const recent = [
   "Plan my vacation", "Help me move to NYC", "Review my weekly goals", "Plan my Q3 priorities",
@@ -27,6 +31,7 @@ function AppSidebar({ page, go }: { page: Page; go: (p: Page) => void }) {
       <SidebarBrand logo={<Asterisk />} name="Hearth" subtitle="Life OS" action={<IconButton size="sm" label="Collapse sidebar" icon={<PanelLeft />} />} />
       <SearchInput size="sm" variant="subtle" shortcut={["⌘", "K"]} />
       <NavGroup title="Main">
+        <NavItem icon={<BookOpen />} active={page === "docs"} onClick={() => go("docs")}>Docs</NavItem>
         <NavItem icon={<PenSquare />} active={page === "chat"} onClick={() => go("chat")} trailing={<Kbd keys={["⌘", "T"]} />}>Chat</NavItem>
         <NavItem icon={<Goal />} active={page === "goals"} onClick={() => go("goals")}>Goals</NavItem>
         <NavItem icon={<Calendar />} count={8}>Calendar</NavItem>
@@ -339,15 +344,24 @@ function ComponentsPage() {
 }
 
 function App() {
-  const initial = (location.hash.slice(1) as Page) || "chat";
+  const pages: Page[] = ["docs", "chat", "goals", "tasks", "files", "components"];
+  const h = location.hash.slice(1) as Page;
+  const initial: Page = pages.includes(h) ? h : "docs";
   const [page, setPage] = React.useState<Page>(initial);
   const go = (p: Page) => {
     setPage(p);
+    window.scrollTo(0, 0);
     history.replaceState(null, "", `#${p}`);
   };
   return (
     <ThemeProvider defaultMode="light">
       <AppShell sidebar={<AppSidebar page={page} go={go} />}>
+        {page === "docs" && (
+          <>
+            <TopBar start={<BackLink noIcon>Documentation</BackLink>} end={<Button size="sm" variant="secondary" onClick={() => window.open("https://github.com/haskaomni/hearth-ui", "_blank")}>GitHub</Button>} />
+            <PageContent><DocsPage /></PageContent>
+          </>
+        )}
         {page === "chat" && <ChatPage />}
         {page === "goals" && <GoalsPage />}
         {page === "files" && <FilesPage />}

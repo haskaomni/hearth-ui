@@ -1,5 +1,7 @@
 # @hearth/ui
 
+📖 **在线文档 & Demo：https://haskaomni.github.io/hearth-ui/**
+
 一套基于 “Hearth · Life OS” 设计稿提炼的 React 组件库：黑白极简、等宽字体、细边框与柔和阴影，内置亮色 / 暗色主题。
 
 - **React 18 / 19**，TypeScript 类型完整
@@ -141,7 +143,7 @@ export default function App() {
 
 ```bash
 npm install
-npm run dev              # 启动 Playground（还原了设计稿的 Chat / Goals / Files / Tasks 四个页面 + 组件总览）
+npm run dev              # 启动文档站（组件文档 + Chat / Goals / Files / Tasks 四个示例页面）
 npm run build            # 构建到 dist/：index.js (ESM) / index.cjs / index.d.ts / styles.css
 npm run typecheck
 ```
@@ -156,5 +158,5 @@ src/
   styles/components.css    组件样式
   components/
     theme.tsx  primitives.tsx  forms.tsx  navigation.tsx  data.tsx  patterns.tsx
-playground/                演示页面
+playground/                文档站 & 演示页面（推送 main 后由 GitHub Actions 自动部署到 Pages）
 ```
