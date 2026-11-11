@@ -4,7 +4,7 @@ import {
   Activity, Asterisk, Bell, BookOpen, Briefcase, Calendar, CalendarDays, Cloud, Compass, Eye, FileText, Files, Folder,
   Goal, HardDrive, Heart, HeartPulse, HelpCircle, Hourglass, Landmark, Lightbulb, Loader, Map, MessageSquare, Mic,
   MoreHorizontal, MoreVertical, Paperclip, PenSquare, Plane, Plus, Receipt, Settings, SlidersHorizontal, Sparkles,
-  Sprout, SquareCheck, Target, TrendingUp, Users, Wallet, LayoutGrid, Brain, ListTodo, PanelLeft, ChevronDown,
+  Sprout, SquareCheck, Download, ExternalLink, Target, TrendingUp, Users, Wallet, LayoutGrid, Brain, ListTodo, PanelLeft, ChevronDown,
 } from "lucide-react";
 import {
   ThemeProvider, ThemeSwitcher, AppShell, Sidebar, SidebarBrand, SidebarSpacer, NavGroup, NavItem, UserCard,
@@ -16,6 +16,7 @@ import {
 import "../src/styles/tokens.css";
 import "../src/styles/components.css";
 import { DocsPage } from "./docs";
+import { GithubMark, LinkButton, REPO_URL, ZIP_URL } from "./links";
 import "./docs.css";
 
 type Page = "docs" | "chat" | "goals" | "tasks" | "files" | "components";
@@ -43,6 +44,10 @@ function AppSidebar({ page, go }: { page: Page; go: (p: Page) => void }) {
       <NavGroup title="Today" collapsible>
         {recent.map((r) => <NavItem key={r} sub>{r}</NavItem>)}
       </NavGroup>
+      <NavGroup title="Resources">
+        <NavItem icon={<GithubMark />} href={REPO_URL} target="_blank" rel="noopener noreferrer" trailing={<ExternalLink size={12} />}>Source on GitHub</NavItem>
+        <NavItem icon={<Download />} href={ZIP_URL} trailing={<span className="hx-kbd">ZIP</span>}>Download</NavItem>
+      </NavGroup>
       <SidebarSpacer />
       <NavGroup title="Setting" collapsible defaultCollapsed><NavItem icon={<Settings />}>Preferences</NavItem></NavGroup>
       <NavGroup title="Help Center" collapsible defaultCollapsed><NavItem icon={<HelpCircle />}>Docs</NavItem></NavGroup>
@@ -52,8 +57,11 @@ function AppSidebar({ page, go }: { page: Page; go: (p: Page) => void }) {
   );
 }
 
+const githubLink = <LinkButton size="sm" href={REPO_URL} icon={<GithubMark size={14} />} aria-label="View source on GitHub">GitHub</LinkButton>;
+
 const topEnd = (
   <>
+    {githubLink}
     <IconButton label="Notifications" icon={<Bell />} variant="secondary" size="sm" />
     <Button size="sm" leftIcon={<PenSquare />}>New</Button>
     <IconButton label="Filters" icon={<SlidersHorizontal />} size="sm" />
@@ -358,7 +366,7 @@ function App() {
       <AppShell sidebar={<AppSidebar page={page} go={go} />}>
         {page === "docs" && (
           <>
-            <TopBar start={<BackLink noIcon>Documentation</BackLink>} end={<Button size="sm" variant="secondary" onClick={() => window.open("https://github.com/haskaomni/hearth-ui", "_blank")}>GitHub</Button>} />
+            <TopBar start={<BackLink noIcon>Documentation</BackLink>} end={githubLink} />
             <PageContent><DocsPage /></PageContent>
           </>
         )}

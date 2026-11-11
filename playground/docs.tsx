@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
   Activity, Bell, Calendar, Folder, Heart, Lightbulb, Map, MessageSquare, Paperclip, Plus, Sparkles, Target,
-  FileText, LayoutGrid, Brain, Check, Copy, Asterisk, PenSquare, SquareCheck,
+  FileText, LayoutGrid, Brain, Check, Copy, Asterisk, PenSquare, SquareCheck, Download,
 } from "lucide-react";
 import {
   Avatar, AvatarGroup, Badge, BarSpark, Button, Card, Field, FileCard, HeroBanner, IconButton, IconTile, Input,
@@ -9,6 +9,7 @@ import {
   Select, Sparkline, StatCard, SuggestionList, Switch, Table, Tabs, TaskCard, Textarea, ThemeSwitcher, Greeting,
   NavGroup, NavItem, SidebarBrand, UserCard, BackLink, Heading, VisionCard, Landscape,
 } from "../src";
+import { GithubMark, LinkButton, REPO_URL, ZIP_URL } from "./links";
 
 type PropRow = [name: string, type: string, def: string, desc: string];
 interface Doc {
@@ -456,7 +457,13 @@ function PropsTable({ rows }: { rows: PropRow[] }) {
   );
 }
 
-const install = `npm i @hearth/ui react react-dom lucide-react`;
+const install = `# straight from GitHub (builds automatically on install)
+npm i github:haskaomni/hearth-ui react react-dom lucide-react`;
+const fromSource = `git clone https://github.com/haskaomni/hearth-ui.git
+cd hearth-ui && npm install
+npm run dev     # docs site at localhost:5173
+npm run build   # dist/: index.js, index.cjs, index.d.ts, styles.css
+npm pack        # hearth-ui-0.1.0.tgz → npm i ./hearth-ui-0.1.0.tgz`;
 const usage = `import "@hearth/ui/styles.css";
 import { ThemeProvider, Button } from "@hearth/ui";
 
@@ -518,8 +525,14 @@ export function DocsPage() {
             A calm, monochrome React component library for AI-native productivity apps. It is styled with plain CSS variables
             (no Tailwind needed), comes with light and dark themes, and is fully typed.
           </p>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <LinkButton variant="primary" href={REPO_URL} icon={<GithubMark />}>View on GitHub</LinkButton>
+            <LinkButton href={ZIP_URL} icon={<Download />}>Download ZIP</LinkButton>
+          </div>
           <h3 className="doc-h3">Install</h3>
           <CodeBlock code={install} />
+          <h3 className="doc-h3">Build from source</h3>
+          <CodeBlock code={fromSource} />
           <h3 className="doc-h3">Use</h3>
           <CodeBlock code={usage} />
           <p className="doc-p">
@@ -559,7 +572,8 @@ export function DocsPage() {
         ))}
         <footer className="doc-foot">
           <MessageSquare size={13} /> Built with Hearth UI ·{" "}
-          <a href="https://github.com/haskaomni/hearth-ui">GitHub</a>
+          <a href={REPO_URL} target="_blank" rel="noopener noreferrer">Source on GitHub</a> ·{" "}
+          <a href={ZIP_URL}>Download ZIP</a>
         </footer>
       </div>
     </div>

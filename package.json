@@ -24,7 +24,8 @@
     "dev": "vite --config vite.playground.config.ts",
     "build": "vite build",
     "build:playground": "vite build --config vite.playground.config.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "lucide-react": ">=0.400",
@@ -41,5 +42,13 @@
     "typescript": "5.7",
     "vite": "^6.4.6",
     "vite-plugin-dts": "^4.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haskaomni/hearth-ui.git"
+  },
+  "homepage": "https://haskaomni.github.io/hearth-ui/",
+  "bugs": {
+    "url": "https://github.com/haskaomni/hearth-ui/issues"
   }
 }

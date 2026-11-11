@@ -1,6 +1,6 @@
 # @hearth/ui
 
-📖 **在线文档 & Demo：https://haskaomni.github.io/hearth-ui/**
+📖 **在线文档 & Demo：https://haskaomni.github.io/hearth-ui/** · ⬇️ [下载源码 ZIP](https://github.com/haskaomni/hearth-ui/archive/refs/heads/main.zip)
 
 一套基于 “Hearth · Life OS” 设计稿提炼的 React 组件库：黑白极简、等宽字体、细边框与柔和阴影，内置亮色 / 暗色主题。
 
@@ -15,6 +15,9 @@
 在其他项目中使用（三选一）：
 
 ```bash
+# 0. 直接从 GitHub 安装（安装时自动构建）
+npm i github:haskaomni/hearth-ui
+
 # 1. 本地路径
 npm i /path/to/hearth-ui
 
